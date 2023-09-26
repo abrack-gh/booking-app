@@ -21,7 +21,7 @@ func main() {
 		var userTickets uint
 		var userEmail string
 
-		fmt.Println("Enter your first name: ")
+		fmt.Println("Enter your first name, or type 'q' to exit.")
 		fmt.Scan(&firstName)
 
 		fmt.Println("Enter your last name: ")
@@ -30,13 +30,23 @@ func main() {
 		fmt.Println("Enter your email for confirmation: ")
 		fmt.Scan(&userEmail)
 
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(userEmail, "@")
+
+		if !isValidEmail || !isValidName {
+
+			fmt.Println("Invalid name or email detected, please try again.")
+			continue
+
+		}
+
 		fmt.Println("Enter your tickets required: ")
 		fmt.Scan(&userTickets)
 
 		if userTickets > conferenceTickets || userTickets <= 0 {
 
 			fmt.Println("Invalid ticket order")
-			return
+			continue
 
 		}
 
