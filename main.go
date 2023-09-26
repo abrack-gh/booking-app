@@ -27,11 +27,18 @@ func main() {
 		fmt.Println("Enter your last name: ")
 		fmt.Scan(&lastName)
 
+		fmt.Println("Enter your email for confirmation: ")
+		fmt.Scan(&userEmail)
+
 		fmt.Println("Enter your tickets required: ")
 		fmt.Scan(&userTickets)
 
-		fmt.Println("Enter your email for confirmation: ")
-		fmt.Scan(&userEmail)
+		if userTickets > conferenceTickets || userTickets <= 0 {
+
+			fmt.Println("Invalid ticket order")
+			return
+
+		}
 
 		fmt.Printf("Hi, %v %v. You have requested %v tickets. \n", firstName, lastName, userTickets)
 		fmt.Printf("A confirmation email has been sent to %v. Thanks for your booking!\n", userEmail)
@@ -39,9 +46,9 @@ func main() {
 		var bookings = []string{}
 		bookings = append(bookings, firstName+" "+lastName)
 
-		fmt.Printf("The whole slice: %v \n", bookings)
-		fmt.Printf("First index: %v \n", bookings[0])
-		fmt.Printf("Length of slice: %v \n", len(bookings))
+		// fmt.Printf("The whole slice: %v \n", bookings)
+		// fmt.Printf("First index: %v \n", bookings[0])
+		// fmt.Printf("Length of slice: %v \n", len(bookings))
 
 		var ticketsLeft uint = conferenceTickets - userTickets
 		fmt.Printf("%v tickets remaining. \n", ticketsLeft)
