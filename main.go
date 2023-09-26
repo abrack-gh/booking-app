@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -45,7 +46,14 @@ func main() {
 		var ticketsLeft uint = remainingTickets - userTickets
 		fmt.Printf("%v tickets remaining. \n", ticketsLeft)
 
-		fmt.Printf("All of our bookings: %v\n", bookings)
+		firstNames := []string{}
+		for _, bookings := range bookings {
+			var names = strings.Fields(bookings)
+			firstNames = append(firstNames, names[0])
+
+		}
+
+		fmt.Printf("All of our bookings: %v\n", firstNames)
 
 	}
 
